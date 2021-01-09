@@ -5,15 +5,13 @@ import { BsCaretDownFill } from 'react-icons/bs';
 
 const DetailsContainer = styled.div`
     width: 50%;
-    padding: 2rem;
-    /* background: #F7F7FF; */
-    /* margin: 1rem;
-    border-radius: 1rem; */
+    margin-bottom: 1.5rem;
 `
 
 const UsersInput = styled.div`
     display: flex;
     align-items: center;
+    width: 100%;
     
     div, button {
         display: flex;
