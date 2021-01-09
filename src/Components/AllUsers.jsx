@@ -13,6 +13,11 @@ const AllUsersDetails = styled.div`
     padding: 2.5rem 3.5rem;
 `
 
+const CardContainer = styled.div`
+    height: 500px;
+    overflow: scroll;
+`
+
 function AllUsers() {
 
     const { users } = useContext(UsersContext)
@@ -20,11 +25,11 @@ function AllUsers() {
     return (
         <AllUsersDetails>
             <Details users="All Users" />
-            {users.map((person, index) => (
-                <UserCard key={index} first={person.name.first} last={person.name.last} email={person.email} image={person.picture.medium} streetNumber={person.location.street.number} streetName={person.location.street.name} city={person.location.city} state={person.location.state} number={person.cell} />
-            ))}
-            <div>
-        </div>
+            <CardContainer>
+                {users.map((person, index) => (
+                    <UserCard key={index} first={person.name.first} last={person.name.last} email={person.email} image={person.picture.medium} streetNumber={person.location.street.number} streetName={person.location.street.name} city={person.location.city} state={person.location.state} number={person.cell} />
+                ))}
+            </CardContainer>
         </AllUsersDetails>
     )
 }
