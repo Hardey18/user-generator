@@ -1,7 +1,7 @@
 import React from 'react'
 import Welcome from './Welcome';
 import styled from 'styled-components';
-import AllUsers from './AllUsers';
+import MaleUsres from './MaleUsers'
 
 const HomeStyle = styled.div`
     box-sizing: border-box;
@@ -9,13 +9,13 @@ const HomeStyle = styled.div`
     height: 100%;
 `
 
-function Home() {
+function Male() {
     return (
         <HomeStyle>
             <Welcome />
-            <AllUsers />
+            <MaleUsres />
         </HomeStyle>
     )
 }
 
-export default Home
+export default Male

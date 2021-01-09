@@ -5,6 +5,7 @@ import { FaUsers } from 'react-icons/fa';
 import { BiMale } from 'react-icons/bi';
 import { FaFemale } from 'react-icons/fa';
 import Thumbnail from './Thumbnail';
+import { Link } from 'react-router-dom';
 
 
 const WelcomeContainer = styled.div`
@@ -63,10 +64,6 @@ const WelcomeContainer = styled.div`
       font-size: 16px;
       font-weight: 800;
     }
-
-    /* .welcome__search > .MuiSvgIcon-root {
-      color: #fff;
-    } */
 `
 
 const ThumbnailContainer = styled.div`
@@ -78,7 +75,7 @@ function Welcome() {
         <WelcomeContainer>
           <div className="welcome__inner">
             <h1>Hello, <span>Emerald</span></h1>
-            <p>Welcome to ypur dashboard, kindly sort through the user base</p>
+            <p>Welcome to your dashboard, kindly sort through the user base</p>
 
             <div className="welcome__search">
                 <FiSearch color="#fff" size={30} />
@@ -88,9 +85,15 @@ function Welcome() {
             <h5>Show Users</h5>
 
             <ThumbnailContainer>
-              <Thumbnail icon={<FaUsers size={40} color="#fff" />} background={"#f935a9"} text="All Users" />
-              <Thumbnail icon={<BiMale size={40} color="#fff" />} background={"#30bbB5"} text="Male Users" />
-              <Thumbnail icon={<FaFemale size={40} color="#fff" />} background={"#7946c1"} text="Female Users" />
+              <Link to="/">
+                <Thumbnail icon={<FaUsers size={40} color="#fff" />} background={"#f935a9"} text="All Users" />
+              </Link>
+              <Link to="male-users">
+                <Thumbnail icon={<BiMale size={40} color="#fff" />} background={"#30bbB5"} text="Male Users" />
+              </Link>
+              <Link to="female-users">
+                <Thumbnail icon={<FaFemale size={40} color="#fff" />} background={"#7946c1"} text="Female Users" />
+              </Link>
             </ThumbnailContainer>
           </div>
         </WelcomeContainer>
