@@ -1,11 +1,12 @@
 import './App.css';
 import GlobalStyle from './GlobalStyles';
+import Home from './Components/Home';
 
 function App() {
   return (
     <>
-    <GlobalStyle />
-      <h1>Hello</h1>
+      <GlobalStyle />
+      <Home />
     </>
   );
 }

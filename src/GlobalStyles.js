@@ -10,7 +10,11 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Poppins', sans-serif;
         margin: 0;
         padding: 0;
+        border: 0;
         box-sizing: border-box;
+        background: #262a41;
+        ${'' /* overflow: hidden; */}
+        height: 100vh;
     }
 `;
 
