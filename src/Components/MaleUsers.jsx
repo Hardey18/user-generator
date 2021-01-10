@@ -6,25 +6,30 @@ import { UsersContext } from '../StateProvider';
 import UserCard from './UserCard';
 
 const MaleUsersDetails = styled.div`
-    width: 50%;
+     width: 50%;
     background: #F7F7FF;
     margin: 1rem;
     border-radius: 1rem;
+    padding: 2.5rem 3.5rem;
+`
+
+const CardContainer = styled.div`
+    height: 500px;
+    overflow: scroll;
 `
 
 function MaleUsers() {
 
-    const { users } = useContext(UsersContext)
-    console.log(users)
+    const { filteredUsers } = useContext(UsersContext)
 
     return (
         <MaleUsersDetails>
             <Details users="Male Users" />
-            <div>
-                {users.map((person, index) => (person.gender === 'male' &&
-                    <UserCard key={index} first={person.name.first} last={person.name.last} email={person.email} />
+            <CardContainer>
+                {filteredUsers.map((person, index) => (person.gender === 'male' &&
+                    <UserCard key={index} first={person.name.first} last={person.name.last} email={person.email} image={person.picture.medium} streetNumber={person.location.street.number} streetName={person.location.street.name} city={person.location.city} state={person.location.state} number={person.cell} />
                 ))}
-            </div>
+            </CardContainer>
         </MaleUsersDetails>
     )
 }

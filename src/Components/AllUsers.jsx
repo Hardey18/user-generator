@@ -20,13 +20,13 @@ const CardContainer = styled.div`
 
 function AllUsers() {
 
-    const { users } = useContext(UsersContext)
+    const { filteredUsers } = useContext(UsersContext)
 
     return (
         <AllUsersDetails>
             <Details users="All Users" />
             <CardContainer>
-                {users.map((person, index) => (
+                {filteredUsers.map((person, index) => (
                     <UserCard key={index} first={person.name.first} last={person.name.last} email={person.email} image={person.picture.medium} streetNumber={person.location.street.number} streetName={person.location.street.name} city={person.location.city} state={person.location.state} number={person.cell} />
                 ))}
             </CardContainer>

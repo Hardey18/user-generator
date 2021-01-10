@@ -11,7 +11,6 @@ const UserCardComponents = styled.div`
     margin-bottom: 1rem;
     padding: 1rem 2rem;
     border-radius: 0.5rem;
-    /* box-shadow: 10px 10px 40px #0000000D; */
 
     img {
         margin-right: 2rem;
@@ -23,15 +22,30 @@ const UserCardComponents = styled.div`
         width: 100%;
     }
 
+    .arrow__right {
+        background:  #30BBB5;
+        padding: 0.6rem;
+        display: flex;
+        align-items: center;
+        border-radius: 0.5rem;
+    }
+
     .user__contact {
         display: flex;
+        justify-content: space-between;
         align-items: center;
         color: #d6d6de;
         width: 100%;
+        /* background: red; */
     }
 
-    .icon {
-        justify-self: right;
+    .user__contact__each {
+        display: flex;
+        align-items: center;
+    }
+
+    .user__contact__each > p {
+        margin-left: 0.4rem;
     }
 `
 
@@ -45,9 +59,17 @@ function UserCard({ first, last, email, image, alt, streetNumber, streetName, ci
                 <h3>{first} {last}</h3>
                 <p>{streetNumber} {streetName}, {city}, {state}</p>
                 <div className="user__contact">
-                    <span><BiEnvelope color="#d6d6de" /> {email}</span>
-                    <span><FiPhoneCall color="#d6d6de" /> {number}</span>
-                    <span className="icon"><RiArrowRightLine /></span>
+                    <div className="user__contact__each">
+                        <BiEnvelope color="#d6d6de" /> 
+                        <p>{email}</p>
+                    </div>
+                    <div className="user__contact__each">
+                        <FiPhoneCall color="#d6d6de" /> 
+                        <p>{number}</p>
+                    </div>
+                    <div className="arrow__right">
+                        <RiArrowRightLine color="#fff" />
+                    </div>
                 </div>
             </div>
         </UserCardComponents>
