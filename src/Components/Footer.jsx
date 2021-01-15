@@ -1,8 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { HiCloudDownload } from 'react-icons/hi';
-import { BiChevronLeft } from 'react-icons/bi';
-import { BiChevronRight } from 'react-icons/bi';
 import Pagination from "react-js-pagination";
 import { UsersContext } from '../StateProvider';
 import fileDownload from 'js-file-download';
@@ -117,14 +115,6 @@ function Footer() {
                 <HiCloudDownload color="#fff" size={20} />
                 <span>Download results</span>
             </div>
-            {/* <div className="arrow__button">
-                <div className="left">
-                    <BiChevronLeft size={20} />
-                </div>
-                <div className="right">
-                    <BiChevronRight size={20} />
-                </div>
-            </div> */}
             <div className="pagination">
                 <Pagination
                 activePage={ activePage }

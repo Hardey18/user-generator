@@ -12,13 +12,11 @@ export const UsersProvider = props => {
     const usersPerPage = 3;
     const [activePage, setCurrentPage] = useState(1);
 
-    // Logic for displaying current todos
     const indexOfLastUser  = activePage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
     const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
 
     const handlePageChange = (pageNumber) => {
-        console.log( `active page is ${pageNumber}`);
         setCurrentPage( pageNumber )
     };
 

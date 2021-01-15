@@ -24,8 +24,6 @@ const CardContainer = styled.div`
 `
 
 function AllUsers() {
-   
-
     const { singleUser, show, currentUsers } = useContext(UsersContext);
 
     const renderUsers = currentUsers.map((person, index) => (
