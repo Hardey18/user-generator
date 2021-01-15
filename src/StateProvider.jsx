@@ -7,7 +7,20 @@ export const UsersProvider = props => {
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [singleUser, setSingleUser] = useState({});
     const [loading, setLoading] = useState(true);
-    const [ show, setShow ] = useState(false);
+    const [show, setShow] = useState(false);
+
+    const usersPerPage = 3;
+    const [activePage, setCurrentPage] = useState(1);
+
+    // Logic for displaying current todos
+    const indexOfLastUser  = activePage * usersPerPage;
+    const indexOfFirstUser = indexOfLastUser - usersPerPage;
+    const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
+
+    const handlePageChange = (pageNumber) => {
+        console.log( `active page is ${pageNumber}`);
+        setCurrentPage( pageNumber )
+    };
 
     const onSearch = (e) => {
         const event = e.target.value
@@ -46,7 +59,7 @@ export const UsersProvider = props => {
         })();
     }, []);
     return (
-        <UsersContext.Provider value={{ users, loading, filteredUsers, onSearch, eachUser, singleUser, show, setShow, closeUser, handleChange }}>
+        <UsersContext.Provider value={{ users, loading, filteredUsers, onSearch, eachUser, singleUser, show, setShow, closeUser, handleChange, currentUsers, activePage, handlePageChange }}>
             {props.children}
         </UsersContext.Provider>
     );

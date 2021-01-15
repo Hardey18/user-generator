@@ -26,22 +26,25 @@ const CardContainer = styled.div`
 
 function FemaleUsers() {
 
-    const { filteredUsers, singleUser, show } = useContext(UsersContext)
+    const { singleUser, show, currentUsers } = useContext(UsersContext)
 
-    console.log(filteredUsers);
+    const renderUsers = currentUsers.map((person, index) => (person.gender === 'female' &&
+        <UserCard key={index} first={person.name.first} last={person.name.last} email={person.email} image={person.picture.medium} streetNumber={person.location.street.number} streetName={person.location.street.name} city={person.location.city} state={person.location.state} number={person.cell} />
+    ))
 
     return (
         <FemaleUsersDetails>
             <Details user="Female Users" />
             <CardContainer>
-                {!show ? (<div className="all">
-                    {filteredUsers.map((person, index) => (person.gender === 'female' &&
-                    <UserCard key={index} first={person.name.first} last={person.name.last} email={person.email} image={person.picture.medium} streetNumber={person.location.street.number} streetName={person.location.street.name} city={person.location.city} state={person.location.state} number={person.cell} />
-                    ))}
-                </div>) :
-                (<div className="single">
-                    <SingleUser title={singleUser?.name?.title} first={singleUser?.name?.first} age={singleUser?.dob?.age} last={singleUser?.name?.last} email={singleUser?.email} image={singleUser?.picture?.large} streetNumber={singleUser?.location?.street?.number} joined={singleUser?.registered?.date.slice(0, 10)} streetName={singleUser?.location?.street?.name} city={singleUser?.location?.city} state={singleUser?.location?.state} number={singleUser?.cell} />
-                </div>)}
+                {!show ? (
+                    <div className="result">
+                        { renderUsers }
+                    </div>
+                    ) :
+                    (
+                    <div className="single">
+                        <SingleUser title={singleUser?.name?.title} first={singleUser?.name?.first} age={singleUser?.dob?.age} last={singleUser?.name?.last} email={singleUser?.email} image={singleUser?.picture?.large} streetNumber={singleUser?.location?.street?.number} joined={singleUser?.registered?.date.slice(0, 10)} streetName={singleUser?.location?.street?.name} city={singleUser?.location?.city} state={singleUser?.location?.state} number={singleUser?.cell} />
+                    </div>)}
             </CardContainer>
             <Footer />
         </FemaleUsersDetails>
