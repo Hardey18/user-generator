@@ -5,17 +5,35 @@ export const UsersContext = createContext();
 export const UsersProvider = props => {
     const [users, setUsers] = useState([]);
     const [filteredUsers, setFilteredUsers] = useState([]);
+    const [singleUser, setSingleUser] = useState({});
     const [loading, setLoading] = useState(true);
+    const [ show, setShow ] = useState(false);
 
     const onSearch = (e) => {
         const event = e.target.value
         const result = users.filter(item => (item.name.first.toLowerCase().slice(0, event.length) === event.toLowerCase()));
         setFilteredUsers(result)
     }
+    
+    const handleChange = (e) => {
+        const event = e.target.value
+        const result = users.filter(item => (item.location.country.toLowerCase().slice(0, event.length) === event.toLowerCase()));
+        setFilteredUsers(result)
+    }
 
-    // useEffect(() => {
-    //     onSearch(e)
-    // }, [e])
+    const eachUser = (e) => {
+        e.preventDefault()
+        const email = e.currentTarget.id;
+        const details = filteredUsers.filter(person => person.email === email)
+        setSingleUser(details[0])
+        setShow(!show)
+        
+    }
+
+    const closeUser = (e) => {
+        e.preventDefault()
+        setShow(!show)
+    }
 
     useEffect(() => {
         (async () => {
@@ -28,7 +46,7 @@ export const UsersProvider = props => {
         })();
     }, []);
     return (
-        <UsersContext.Provider value={{ users, loading, filteredUsers, onSearch }}>
+        <UsersContext.Provider value={{ users, loading, filteredUsers, onSearch, eachUser, singleUser, show, setShow, closeUser, handleChange }}>
             {props.children}
         </UsersContext.Provider>
     );

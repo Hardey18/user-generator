@@ -7,6 +7,11 @@ const HomeStyle = styled.div`
     box-sizing: border-box;
     display: flex;
     height: 100%;
+
+    @media(max-width:1200px) {
+        flex-direction: column;
+        width: 100%;
+    }
 `
 
 function Male() {

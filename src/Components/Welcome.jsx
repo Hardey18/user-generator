@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { FiSearch } from 'react-icons/fi';
 import { FaUsers } from 'react-icons/fa';
@@ -6,6 +6,7 @@ import { BiMale } from 'react-icons/bi';
 import { FaFemale } from 'react-icons/fa';
 import Thumbnail from './Thumbnail';
 import { Link } from 'react-router-dom';
+import { UsersContext } from '../StateProvider';
 
 
 const WelcomeContainer = styled.div`
@@ -15,6 +16,10 @@ const WelcomeContainer = styled.div`
     align-items: center;
     justify-content: center;
     color: #fff;
+
+    @media(max-width:1200px) {
+        width: 100%;
+    }
 
     .welcome__inner > p {
       letter-spacing: 0.23px;
@@ -71,6 +76,7 @@ const ThumbnailContainer = styled.div`
 `
 
 function Welcome() {
+    const { closeUser, show } = useContext(UsersContext);
     return (
         <WelcomeContainer>
           <div className="welcome__inner">
@@ -85,13 +91,13 @@ function Welcome() {
             <h5>Show Users</h5>
 
             <ThumbnailContainer>
-              <Link to="/">
+              <Link to="/" onClick={show ? closeUser : null}>
                 <Thumbnail icon={<FaUsers size={40} color="#fff" />} background={"#f935a9"} text="All Users" />
               </Link>
-              <Link to="male-users">
+              <Link to="male-users" onClick={show ? closeUser : null}>
                 <Thumbnail icon={<BiMale size={40} color="#fff" />} background={"#30bbB5"} text="Male Users" />
               </Link>
-              <Link to="female-users">
+              <Link to="female-users" onClick={show ? closeUser : null}>
                 <Thumbnail icon={<FaFemale size={40} color="#fff" />} background={"#7946c1"} text="Female Users" />
               </Link>
             </ThumbnailContainer>
