@@ -94,22 +94,16 @@ function SingleUser({ first, last, title, email, image, alt, streetNumber, stree
                     <p className="address">{streetNumber} {streetName}, {city}, {state}</p>
                     <p className="email">
                         <BiEnvelope color="#8c8f9e" />
-                        <span>                          {email}
-                        </span>
-
+                        <span>{email}</span>
                     </p>
                     <p className="joined">JOINED: {joined}</p>
                     <p>
                         <FiPhoneCall color="#8c8f9e" /> 
-                        <span>                          {number}
-                        </span>
-
+                        <span>{number}</span>
                     </p>
                     <p>
                         <MdPhoneAndroid color="#8c8f9e" />
-                        <span>                          {number}
-                        </span>
-
+                        <span>{number}</span>
                     </p>
                 </div>
             </DetailWrapper>

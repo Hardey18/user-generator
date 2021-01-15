@@ -53,9 +53,7 @@ const UserCardComponents = styled.div`
 
 function UserCard({ first, last, email, image, alt, streetNumber, streetName, city, state, number }) {
 
-    const { eachUser, setShow, show } = useContext(UsersContext)
-
-    
+    const { eachUser } = useContext(UsersContext)
 
     return (
         <UserCardComponents>
