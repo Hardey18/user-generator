@@ -20,7 +20,7 @@ Click [here](https://usergenerator.netlify.app/) to the deployed site
 
 
 ## Continous integration
-[![CircleCI](https://circleci.com/gh/hardey18/user-generator.svg?style=shield&circle-token=3b49ed608870853fa3d38eac5fcecd4b399e999d)](https://app.circleci.com/pipelines/github/hardey18/user-generator)
+[![CircleCI](https://circleci.com/gh/Hardey18/user-generator.svg?style=shield&circle-token=3b49ed608870853fa3d38eac5fcecd4b399e999d)](https://app.circleci.com/pipelines/github/Hardey18/user-generator)
     
     
   
