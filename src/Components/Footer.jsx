@@ -5,6 +5,7 @@ import { BiChevronLeft } from 'react-icons/bi';
 import { BiChevronRight } from 'react-icons/bi';
 import Pagination from "react-js-pagination";
 import { UsersContext } from '../StateProvider';
+import fileDownload from 'js-file-download';
 
 const FooterContainer = styled.div`
     display: flex;
@@ -72,36 +73,47 @@ const FooterContainer = styled.div`
             }
         }
     }
-
-    /* .arrow__button {
-        display: flex;
-
-        .left {
-            padding: 7px;
-            background: #e2e2eb;
-            color: #272a41;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        .right {
-            padding: 7px;
-            background: #272a41;
-            color: #fff;
-            margin-left: 10px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-    } */
 `
+
+const jsonToCsv = (data) => {
+    const headers = Object.keys(data[0]);
+    const csvRows = [];
+    csvRows.push(headers.join(','));
+    for (const row of data) {
+        const values = headers.map((header) => {
+            const escapedQoute = ('' + row[header]).replace(/"/g, '\\"')
+            return `"${escapedQoute}"`;
+        })
+        csvRows.push(values.join(','));
+    }
+    return csvRows.join('\n');
+}
 
 function Footer() {
 
     const { filteredUsers, activePage, handlePageChange } = useContext(UsersContext);
 
+    const state = useContext(UsersContext);
+    const formattedData = state?.filteredUsers.map((data) => ({
+        Fullname: `${data.name.first} ${data.name.last}`,
+        Gender: data.gender,
+        Dob: data.dob.date,
+        Email: data.email,
+        Phone: data.phone,
+        Cell: data.cell,
+        Address: `${data.location.street.number} ${data.location.street.name}, ${data.location.city} ${data.location.country}`
+    }))
+    
+    const download = () => {
+        console.log(jsonToCsv(formattedData));
+        const data = jsonToCsv(formattedData);
+        let blob = new Blob([data], { type: 'text/csv' });
+        fileDownload(blob, "user.csv");
+    }
+
     return (
         <FooterContainer>
-            <div className="download__button">
+            <div className="download__button" onClick={download}>
                 <HiCloudDownload color="#fff" size={20} />
                 <span>Download results</span>
             </div>

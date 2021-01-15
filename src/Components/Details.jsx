@@ -119,9 +119,9 @@ const UsersInput = styled.div`
     }
 `
 
-
 function Details({ user }) {
     const { onSearch, handleChange, users } = useContext(UsersContext)
+
     return (
         <DetailsContainer>
             <div className="details__inner">

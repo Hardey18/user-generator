@@ -33,6 +33,7 @@ export const UsersProvider = props => {
         const result = users.filter(item => (item.location.country.toLowerCase().slice(0, event.length) === event.toLowerCase()));
         setFilteredUsers(result)
     }
+    
 
     const eachUser = (e) => {
         e.preventDefault()
